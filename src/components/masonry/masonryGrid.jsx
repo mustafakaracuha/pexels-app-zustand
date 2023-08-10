@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Masonry from "react-masonry-css";
-import { CgSpinner } from "react-icons/cg";
+
 import { useStore } from "../../store/store";
+import ShowImage from "./showImage";
 
 function masonryGrid() {
   const { images } = useStore();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
 
   const breakpointColumnsObj = {
     default: 7,
@@ -13,27 +16,39 @@ function masonryGrid() {
     500: 2,
   };
 
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
+    console.log(index)
+  };
+
   return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {images.map((image) => (
+    <>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {images.map((image, index) => (
+        <ShowImage
+        image={image}
+        setSelectedImage={setSelectedImage}
+        onClick={() => handleImageClick(index)}
+        />
+        ))}
+      </Masonry>
+      {selectedImage && (
         <div
-          key={image.id}
-          onClick={() => window.open(image.src.original, "_blank")}
-          className={`image-item mb-4 relative rounded-xl cursor-pointer p-2 bg-[${image.avg_color}]`}
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75 z-50"
+          onClick={() => setSelectedImage(null)}
         >
           <img
-            src={image.src.medium}
-            alt={image.photographer}
-            className="w-full h-auto rounded-md shadow-md image transition-all duration-300 lg:hover:scale-105"
+            src={selectedImage}
+            alt="Büyük Resim"
+            className="max-h-screen max-w-full p-10 rounded-[60px] transform transition-transform duration-300"
           />
-          <p className="text-md text-gray-500 mt-3">{image.photographer}</p>
         </div>
-      ))}
-    </Masonry>
+      )}
+    </>
   );
 }
 
