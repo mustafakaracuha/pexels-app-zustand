@@ -7,18 +7,12 @@ import ShowImage from "./showImage";
 function masonryGrid() {
   const { images } = useStore();
   const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(-1);
 
   const breakpointColumnsObj = {
     default: 7,
     1100: 5,
     700: 2,
     500: 2,
-  };
-
-  const handleImageClick = (index) => {
-    setSelectedImageIndex(index);
-    console.log(index)
   };
 
   return (
@@ -32,7 +26,6 @@ function masonryGrid() {
         <ShowImage
         image={image}
         setSelectedImage={setSelectedImage}
-        onClick={() => handleImageClick(index)}
         />
         ))}
       </Masonry>
