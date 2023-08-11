@@ -24,6 +24,7 @@ function masonryGrid() {
       >
         {images.map((image, index) => (
         <ShowImage
+        key={image.id}
         image={image}
         setSelectedImage={setSelectedImage}
         />

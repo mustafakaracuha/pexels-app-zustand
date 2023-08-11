@@ -26,7 +26,7 @@ const ImageDisplay = () => {
           <DarkMode />
         </div>
       </div>
-      {images.length > 0 ? <MasonryGrid /> : <p className={darkMode && "text-gray-500"}>Lütfen tekrar deneyin</p>}
+      {images.length > 0 ? <MasonryGrid /> : <p className={darkMode ? "text-gray-500": ""}>Lütfen tekrar deneyin</p>}
     </div>
   );
 };
