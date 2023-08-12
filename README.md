@@ -23,10 +23,13 @@ Bu uygulama, Pexels API'sini kullanarak resimleri görüntülemek için oluştur
 - Zustand
 - Tailwind CSS
 - React Icons
+- Masonry Grid
 
 ## Ekran Görüntüleri
 
-![Uygulama Ekran Görüntüsü](screenshot.png)
+![Uygulama Ekran Görüntüsü](./src/assets/dark.png)
+![Uygulama Ekran Görüntüsü](./src/assets/light.png)
+![Uygulama Ekran Görüntüsü](./src/assets/mobile.png)
 
 ---
 
