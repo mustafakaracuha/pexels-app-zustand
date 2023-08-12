@@ -30,8 +30,8 @@ This application was created to view images using the Pexels API. Users can brow
 ## Ekran Görüntüleri / Screenshots
 
   <div>
-  <img width="400" src="./src/assets/light.png" />
-  <img width="400" src="./src/assets/dark.png" />
+  <img width="200" src="./src/assets/light.png" />
+  <img width="200" src="./src/assets/dark.png" />
   <img width="200" src="./src/assets/mobile.png" />
   </div>
 
