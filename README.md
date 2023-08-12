@@ -34,7 +34,8 @@ This application was created to view images using the Pexels API. Users can brow
   <img width="300" src="./src/assets/dark.png" />
   </div>
 
-  [Live version](https://react-pexels-app.vercel.app/)
+
+  ➡️ [Live version](https://react-pexels-app.vercel.app/)
 
 ---
 
