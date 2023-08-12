@@ -1,8 +1,35 @@
-# React + Vite
+# Pexels Resim Galerisi Uygulaması
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu uygulama, Pexels API'sini kullanarak resimleri görüntülemek için oluşturulmuştur. Kullanıcılar rastgele resimlere göz atabilir, anahtar kelimelerle resim arayabilir ve resimleri büyüterek detaylı görüntüleyebilirler.
 
-Currently, two official plugins are available:
+## Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Rastgele resimleri görüntüleme
+- Anahtar kelime aramasıyla resimleri filtreleme
+- Resimleri büyüterek detaylı görüntüleme
+- Kullanıcı dostu arayüz
+- Koyu mod desteği
+
+## Kullanım
+
+1. Uygulamayı başlatmak için `npm install` komutunu kullanarak gerekli bağımlılıkları yükleyin.
+2. Ardından `npm run dev` komutuyla uygulamayı başlatabilirsiniz.
+3. Tarayıcınızda `http://localhost:5173` adresine giderek uygulamayı kullanabilirsiniz.
+
+## Kullanılan Teknolojiler
+
+- React.js
+- Pexels API
+- Zustand
+- Tailwind CSS
+- React Icons
+
+## Ekran Görüntüleri
+
+![Uygulama Ekran Görüntüsü](screenshot.png)
+
+---
+
+Bu uygulama, React Js, Zustand kullanımını ve harici API entegrasyonu konularını anlamak için oluşturulmuştur. İstediğiniz gibi geliştirebilir ve özelleştirebilirsiniz.
+
+**Not:** Bu uygulama Pexels API'sini kullanmaktadır. Kendi API anahtarınızı kullanarak denemeler yapabilirsiniz.
