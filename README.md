@@ -27,16 +27,14 @@ This application was created to view images using the Pexels API. Users can brow
 - React Icons
 - Masonry Grid
 
-## Uygulama
-
-[Live](https://react-pexels-app.vercel.app/)
-
 ## Ekran Görüntüleri / Screenshots
 
   <div>
   <img width="300" src="./src/assets/light.png" />
   <img width="300" src="./src/assets/dark.png" />
   </div>
+
+  [Live version](https://react-pexels-app.vercel.app/)
 
 ---
 
