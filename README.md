@@ -27,9 +27,11 @@ Bu uygulama, Pexels API'sini kullanarak resimleri görüntülemek için oluştur
 
 ## Ekran Görüntüleri
 
-![Uygulama Ekran Görüntüsü](./src/assets/dark.png) ![Uygulama Ekran Görüntüsü](./src/assets/light.png) ![Uygulama Ekran Görüntüsü](./src/assets/mobile.png)
-:-------------------------:|:-------------------------:|:-------------------------:
-Genişlik: 800px            | Genişlik: 800px           | Genişlik: 800px            
+  <div>
+  <img width="400" src="./src/assets/light.png" />
+  <img width="400" src="./src/assets/dark.png" />
+  <img width="400" src="./src/assets/mobile.png" />
+  </div>
 
 ---
 
