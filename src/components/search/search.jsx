@@ -9,7 +9,7 @@ function Search({ setImages }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    if (searchTerm.trim() === "") {
+    if (searchTerm === "") {
       fetchRandom();
     } else {
       fetchSearchResults();
