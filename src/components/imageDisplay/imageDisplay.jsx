@@ -20,7 +20,7 @@ const ImageDisplay = () => {
 
   const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 100) {
-      setPage(prevPage => prevPage + 1);
+      fetchMoreRandomImages()
     }
     if (window.scrollY > 100) {
       setShowButton(true);
@@ -43,7 +43,6 @@ const ImageDisplay = () => {
 
 
   useEffect(() => {
-    fetchMoreRandomImages()
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -55,6 +54,7 @@ const ImageDisplay = () => {
     try {
       const randomImages = await fetchMoreRandom(page);
       setImages([...images, ...randomImages])
+      setPage(page + 1);
     } catch (error) {
       console.error("Error fetching random images:", error);
     }
