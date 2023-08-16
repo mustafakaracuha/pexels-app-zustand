@@ -4,15 +4,16 @@ import { useStore } from "../../store/store";
 import MasonryGrid from "../masonry/masonryGrid";
 import DarkMode from "../darkMode/darkMode";
 import Search from "../search/search";
-import { fetchMoreRandomImages,fetchRandomImages } from "../../utils/api";
+import { fetchRandom } from "../../utils/api";
 
 import { FaArrowUp } from 'react-icons/fa';
 
 
 const ImageDisplay = () => {
   const { images, setImages, darkMode } = useStore();
-  const [page, setPage] = useState(1)
   const [showButton, setShowButton] = useState(false);
+  const [page, setPage] = useState(1)
+
 
   const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 100) {
@@ -34,7 +35,7 @@ const ImageDisplay = () => {
 
 
   useEffect(() => {
-    fetchMoreRandom()
+    fetchRandomImages()
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -42,9 +43,9 @@ const ImageDisplay = () => {
   }, [page]);
 
 
-  const fetchMoreRandom = async () => {
+  const fetchRandomImages = async () => {
     try {
-      const randomImages = await fetchMoreRandomImages(page);
+      const randomImages = await fetchRandom(page);
       setImages([...images, ...randomImages])
     } catch (error) {
       console.error("Error fetching random images:", error);
@@ -55,7 +56,7 @@ const ImageDisplay = () => {
   return (
     <> 
       <div className="w-full flex max-sm:flex-col items-start justify-between mb-5">
-        <p className="w-full text-xl max-sm:text-[30px] max-sm:text-center max-sm:tracking-[4px] text-gray-500 font-bold max-sm:mb-5">
+        <p className="w-full text-xl max-sm:text-[30px] max-sm:text-center cursor-pointer max-sm:tracking-[4px] text-gray-500 font-bold max-sm:mb-5">
           <span className="text-indigo-400">Masonry Grid</span> Pexels
           <span className="font-light max-sm:hidden"> / Mustafa Karaçuha</span>
         </p>
