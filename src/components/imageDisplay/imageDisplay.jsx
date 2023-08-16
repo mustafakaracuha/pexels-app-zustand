@@ -4,7 +4,7 @@ import { useStore } from "../../store/store";
 import MasonryGrid from "../masonry/masonryGrid";
 import DarkMode from "../darkMode/darkMode";
 import Search from "../search/search";
-import { fetchMoreRandomImages } from "../../utils/api";
+import { fetchMoreRandomImages,fetchRandomImages } from "../../utils/api";
 
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -34,7 +34,7 @@ const ImageDisplay = () => {
 
 
   useEffect(() => {
-    fetchMoreRandom();
+    fetchMoreRandom()
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -53,13 +53,7 @@ const ImageDisplay = () => {
 
 
   return (
-    <div
-      className={
-        darkMode
-          ? "flex w-full h-full flex-col items-center justify-start p-14 transition duration-500 bg-black scroll-smooth"
-          : "flex w-full h-full flex-col items-center justify-start p-14 transition duration-500 bg-white scroll-smooth"
-      }
-    > 
+    <> 
       <div className="w-full flex max-sm:flex-col items-start justify-between mb-5">
         <p className="w-full text-xl max-sm:text-[30px] max-sm:text-center max-sm:tracking-[4px] text-gray-500 font-bold max-sm:mb-5">
           <span className="text-indigo-400">Masonry Grid</span> Pexels
@@ -70,9 +64,9 @@ const ImageDisplay = () => {
           <DarkMode />
         </div>
       </div>
-      {images.length > 0 ? <MasonryGrid /> : <p className={darkMode ? "text-gray-500": ""}>Lütfen tekrar deneyin</p>}
-      {showButton && <button onClick={scrollToTop} className={darkMode ? "sticky bottom-5 p-6 bg-[#242424] shadow-xl rounded-full transition-all duration-300 active:scale-110 hover:scale-105" : "sticky bottom-5 p-6 bg-white shadow-xl rounded-full transition-all duration-300 active:scale-110 hover:scale-105"}><FaArrowUp className={darkMode ? "text-indigo-400": "text-indigo-400"} size={27}/></button>}
-    </div> 
+      {images.length > 0 ? <MasonryGrid /> : <p className={darkMode ? "flex w-full h-screen items-center justify-center text-gray-500 overflow-hidden": "flex w-full h-screen items-center justify-center text-gray-500 overflow-hidden"}>Lütfen tekrar deneyin</p>}
+      {showButton && <button onClick={scrollToTop} className={darkMode ? "sticky bottom-5 p-6 bg-[#242424] opacity-90 shadow-xl rounded-full transition-all duration-300 active:scale-110 hover:scale-105" : "sticky bottom-5 p-6 bg-white shadow-xl opacity-90 rounded-full transition-all duration-300 active:scale-110 hover:scale-105"}><FaArrowUp className={darkMode ? "text-indigo-400": "text-indigo-400"} size={27}/></button>}
+    </> 
   );
 };
 export default ImageDisplay;
