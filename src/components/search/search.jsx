@@ -2,18 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useStore } from "../../store/store";
 
 import { FaSearch } from "react-icons/fa";
-import { fetchSearchedImages } from "../../utils/api";
+import { fetchSearchedImages, fetchRandom } from "../../utils/api";
 
 function Search({ setImages }) {
   const { darkMode } = useStore();
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    if (searchTerm) {
-      fetchSearchResults();
+    if (searchTerm.trim() === "") {
+      fetchRandomImages()
     }
+    fetchSearchResults()
   }, [searchTerm]);
 
+  const fetchRandomImages = async () => {
+    try {
+      const randomImages = await fetchRandom();
+      setImages(randomImages);
+    } catch (error) {
+      console.error("Error fetching random images:", error);
+    }
+  };
 
   const fetchSearchResults = async () => {
     try {

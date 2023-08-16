@@ -4,15 +4,18 @@ import { useStore } from "../../store/store";
 import MasonryGrid from "../masonry/masonryGrid";
 import DarkMode from "../darkMode/darkMode";
 import Search from "../search/search";
-import { fetchRandom } from "../../utils/api";
+import { fetchMoreRandom, fetchRandom } from "../../utils/api";
 
 import { FaArrowUp } from 'react-icons/fa';
+import { CgSpinner } from 'react-icons/cg';
+
 
 
 const ImageDisplay = () => {
   const { images, setImages, darkMode } = useStore();
   const [showButton, setShowButton] = useState(false);
   const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
 
 
   const handleScroll = () => {
@@ -33,9 +36,14 @@ const ImageDisplay = () => {
     });
   };
 
-
   useEffect(() => {
     fetchRandomImages()
+  }, []);
+
+
+
+  useEffect(() => {
+    fetchMoreRandomImages()
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -43,10 +51,23 @@ const ImageDisplay = () => {
   }, [page]);
 
 
-  const fetchRandomImages = async () => {
+  const fetchMoreRandomImages = async () => {
     try {
-      const randomImages = await fetchRandom(page);
+      const randomImages = await fetchMoreRandom(page);
       setImages([...images, ...randomImages])
+    } catch (error) {
+      console.error("Error fetching random images:", error);
+    }
+  };
+
+  const fetchRandomImages = async () => {
+    setLoading(true)
+    try {
+      const randomImages = await fetchRandom();
+      setImages(randomImages)
+      setTimeout(() => {
+        setLoading(false)
+        }, 1500);
     } catch (error) {
       console.error("Error fetching random images:", error);
     }
@@ -65,8 +86,9 @@ const ImageDisplay = () => {
           <DarkMode />
         </div>
       </div>
-      {images.length > 0 ? <MasonryGrid /> : <p className={darkMode ? "flex w-full h-screen items-center justify-center text-gray-500 overflow-hidden": "flex w-full h-screen items-center justify-center text-gray-500 overflow-hidden"}>Lütfen tekrar deneyin</p>}
-      {showButton && <button onClick={scrollToTop} className={darkMode ? "sticky bottom-5 p-6 bg-[#242424] opacity-90 shadow-xl rounded-full transition-all duration-300 active:scale-110 hover:scale-105" : "sticky bottom-5 p-6 bg-white shadow-xl opacity-90 rounded-full transition-all duration-300 active:scale-110 hover:scale-105"}><FaArrowUp className={darkMode ? "text-indigo-400": "text-indigo-400"} size={27}/></button>}
+      {loading ? <div className="w-full h-screen flex items-start justify-center"><CgSpinner size={40} className="text-indigo-400 animate-spin"/></div> : <MasonryGrid />}
+      {images.length === 0 && loading === false ? <p className="text-gray-400 w-full h-screen flex items-start justify-center">Aradığınız sonuç bulunamadı</p>: ""}
+      {showButton && <button onClick={scrollToTop} className={darkMode ? "sticky bottom-5 p-6 bg-[#242424] opacity-90 shadow-xl rounded-full transition-all duration-300 active:scale-110 hover:scale-105 flex" : "sticky bottom-5 p-6 bg-white shadow-xl opacity-90 rounded-full transition-all duration-300 active:scale-110 hover:scale-105 flex"}><FaArrowUp className={darkMode ? "text-indigo-400": "text-indigo-400"} size={27}/></button>}
     </> 
   );
 };

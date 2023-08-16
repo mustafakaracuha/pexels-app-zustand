@@ -9,7 +9,7 @@ function masonryGrid() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const breakpointColumnsObj = {
-    default: 7,
+    default: 6,
     1100: 5,
     700: 2,
     500: 2,

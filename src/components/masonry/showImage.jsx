@@ -5,7 +5,7 @@ function ShowImage({image,setSelectedImage}) {
     <div
     key={image.id}
     onClick={() => setSelectedImage(image.src.large2x)}
-    className={`image-item mb-4 relative rounded-xl cursor-pointer p-2 bg-[${image.avg_color}]`}
+    className={`image-item mb-4 relative rounded-xl cursor-pointer p-1 bg-[${image.avg_color}]`}
   >
     <img
       src={image.src.medium}
