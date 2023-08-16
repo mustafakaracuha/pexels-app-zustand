@@ -86,7 +86,7 @@ const ImageDisplay = () => {
           <DarkMode />
         </div>
       </div>
-      {loading ? <div className="w-full h-screen flex items-start justify-center"><CgSpinner size={40} className="text-indigo-400 animate-spin"/></div> : <MasonryGrid />}
+      {loading ? <div className="w-full h-screen flex items-start justify-center text-center"><CgSpinner size={40} className="text-indigo-400 animate-spin"/></div> : <MasonryGrid />}
       {images.length === 0 && loading === false ? <p className="text-gray-400 w-full h-screen flex items-start justify-center">Aradığınız sonuç bulunamadı</p>: ""}
       {showButton && <button onClick={scrollToTop} className={darkMode ? "sticky bottom-5 p-6 bg-[#242424] opacity-90 shadow-xl rounded-full transition-all duration-300 active:scale-110 hover:scale-105 flex" : "sticky bottom-5 p-6 bg-white shadow-xl opacity-90 rounded-full transition-all duration-300 active:scale-110 hover:scale-105 flex"}><FaArrowUp className={darkMode ? "text-indigo-400": "text-indigo-400"} size={27}/></button>}
     </> 
